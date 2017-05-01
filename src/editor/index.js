@@ -1,5 +1,6 @@
 import React from 'react';
 import Selection from './selection';
+import EventListener/* , {withOptions}*/ from 'react-event-listener';
 
 class Editor extends React.Component {
   constructor(props) {
@@ -19,23 +20,28 @@ class Editor extends React.Component {
 
   render() {
     return (
-      <svg
-        focusable
-        onFocus={e => console.log(e)}
-        onKeyDown={e => console.log(e.altKey, e.ctrlKey, e.shiftKey)}
-        onKeyUp={e => console.log(e.altKey, e.ctrlKey, e.shiftKey)}
-        onMouseMove={e => this.setState({ x: e.clientX, y: e.clientY })}
-        onMouseDown={e => this.setState({ startX: e.clientX, startY: e.clientY, mouseDown: true })}
-        onMouseUp={() => this.setState({ mouseDown: false })}
-        onContextMenu={e => e.preventDefault()}
-      >
-        {this.state.mouseDown && <Selection
-          startX={this.state.startX}
-          startY={this.state.startY}
-          endX={this.state.x}
-          endY={this.state.y}
-        />}
-      </svg>
+      <div>
+        <EventListener
+          target="window"
+          onKeyDown={e => console.log(e.key, e.altKey, e.ctrlKey, e.shiftKey)}
+          onKeyUp={e => console.log(e.key, e.altKey, e.ctrlKey, e.shiftKey)}
+        />
+        <svg
+          onMouseMove={e => this.setState({ x: e.clientX, y: e.clientY })}
+          onMouseDown={e => this.setState({
+            startX: e.clientX, startY: e.clientY, mouseDown: true,
+          })}
+          onMouseUp={() => this.setState({ mouseDown: false })}
+          onContextMenu={e => e.preventDefault()}
+        >
+          {this.state.mouseDown && <Selection
+            startX={this.state.startX}
+            startY={this.state.startY}
+            endX={this.state.x}
+            endY={this.state.y}
+          />}
+        </svg>
+      </div>
     );
   }
 }
