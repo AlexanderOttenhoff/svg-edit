@@ -2,20 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import presentation from './presentation';
 
-const Circle = props => <circle {...props} />;
+const Ellipse = props => <ellipse {...props} />;
 
-Circle.propTypes = {
+Ellipse.propTypes = {
   cx: PropTypes.number,
   cy: PropTypes.number,
-  r: PropTypes.number,
+  rx: PropTypes.number,
+  ry: PropTypes.number,
   ...presentation.propTypes,
 };
 
-Circle.defaultProps = {
+Ellipse.defaultProps = {
   cx: 0,
   cy: 0,
-  r: 0,
+  rx: 0,
+  ry: 0,
   ...presentation.defaultProps,
 };
 
-export default Circle;
+export default Ellipse;

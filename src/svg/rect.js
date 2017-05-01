@@ -1,16 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import presentation from './presentation';
 
-const Rect = ({ x, y, width, height, rx, ry }) => (
-  <rect
-    x={x}
-    y={y}
-    width={width}
-    height={height}
-    rx={rx}
-    ry={ry}
-  />
-);
+const Rect = props => <rect {...props} />;
 
 Rect.propTypes = {
   x: PropTypes.number,
@@ -19,6 +11,7 @@ Rect.propTypes = {
   height: PropTypes.number,
   rx: PropTypes.number,
   ry: PropTypes.number,
+  ...presentation.propTypes,
 };
 
 Rect.defaultProps = {
@@ -28,6 +21,7 @@ Rect.defaultProps = {
   height: 0,
   rx: 0,
   ry: 0,
+  ...presentation.defaultProps,
 };
 
 export default Rect;
