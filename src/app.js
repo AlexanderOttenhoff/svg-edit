@@ -1,7 +1,5 @@
 import React from 'react';
 
-const SIZE = 20;
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -22,8 +20,9 @@ class App extends React.Component {
         onMouseMove={e => this.setState({ x: e.clientX, y: e.clientY })}
         onMouseDown={() => this.setState({ clicked: true })}
         onMouseUp={() => this.setState({ clicked: false })}
+        onContextMenu={e => e.preventDefault()}
       >
-        <rect fill={this.state.clicked ? 'green' : 'red'} width={SIZE} height={SIZE} x={this.state.x - (SIZE / 2)} y={this.state.y - (SIZE / 2)} />
+        <circle fill={this.state.clicked ? 'green' : 'red'} r={10} cx={this.state.x} cy={this.state.y} />
         {/* <text y={50} fontSize={50} stroke="black">Test</text> */}
       </svg>
     );
