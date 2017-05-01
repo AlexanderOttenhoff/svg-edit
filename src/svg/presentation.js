@@ -53,7 +53,7 @@ export default {
     // strokeLinejoin: PropTypes.string,
     // strokeMiterlimit: PropTypes.string,
     // strokeOpacity: PropTypes.string,
-    // strokeWidth: PropTypes.string,
+    strokeWidth: PropTypes.number,
     // textAnchor: PropTypes.string,
     // textDecoration: PropTypes.string,
     // textRendering: PropTypes.string,
@@ -65,5 +65,6 @@ export default {
   defaultProps: {
     fill: null,
     stroke: null,
+    strokeWidth: 0,
   },
 };
