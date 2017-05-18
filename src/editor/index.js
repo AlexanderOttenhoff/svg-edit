@@ -1,6 +1,8 @@
 import React from 'react';
+import EventListener from 'react-event-listener';
 import Selection from './selection';
-import EventListener/* , {withOptions}*/ from 'react-event-listener';
+import Toolbar from './toolbar';
+import { Container } from 're-bulma';
 
 class Editor extends React.Component {
   constructor(props) {
@@ -11,6 +13,9 @@ class Editor extends React.Component {
       x: 0,
       y: 0,
       mouseDown: false,
+      altDown: false,
+      ctrlDown: false,
+      shiftDown: false,
     };
   }
 
@@ -20,11 +25,12 @@ class Editor extends React.Component {
 
   render() {
     return (
-      <div>
+      <Container>
+        <Toolbar />
         <EventListener
           target="window"
-          onKeyDown={e => console.log(e.key, e.altKey, e.ctrlKey, e.shiftKey)}
-          onKeyUp={e => console.log(e.key, e.altKey, e.ctrlKey, e.shiftKey)}
+          onKeyDown={e => this.setState({ alt: e.altKey, ctrl: e.ctrlKey, shift: e.shiftKey })}
+          onKeyUp={e => this.setState({ alt: e.altKey, ctrl: e.ctrlKey, shift: e.shiftKey })}
         />
         <svg
           onMouseMove={e => this.setState({ x: e.clientX, y: e.clientY })}
@@ -41,7 +47,7 @@ class Editor extends React.Component {
             endY={this.state.y}
           />}
         </svg>
-      </div>
+      </Container>
     );
   }
 }

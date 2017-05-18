@@ -12,7 +12,9 @@
   },
   "dependencies": {
     "immutable": "^3.8.1",
+    "insert-css": "^2.0.0",
     "prop-types": "^15.5.8",
+    "re-bulma": "^0.4.3",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-event-listener": "^0.4.5",
